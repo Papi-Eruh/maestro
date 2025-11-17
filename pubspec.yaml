@@ -1,0 +1,14 @@
+name: maestro
+description: An audio package showing interfaces to deliver more features adapted to our app ecosystem.
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+
+dev_dependencies:
+  mocktail: ^1.0.4
+  test: ^1.26.3
+  very_good_analysis: ^10.0.0
