@@ -162,6 +162,9 @@ abstract class MusicPlayer {
   /// Start playback.
   Future<void> play();
 
+  /// Restart the current music
+  Future<void> restart();
+
   /// Returns the duration of current music
   /// from a specific track in the playlist.
   ///
