@@ -219,7 +219,7 @@ abstract class AudioPlayer {
   Future<void> pause();
 
   /// Seek to a specific position.
-  Future<void> seek(Duration? duration);
+  Future<void> seek(Duration? duration, {int? index});
 
   /// Move by a relative duration.
   Future<void> move(Duration duration);
