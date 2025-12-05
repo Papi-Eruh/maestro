@@ -172,6 +172,10 @@ abstract class MusicPlayer {
   /// ignoring the [index] parameter.
   /// Otherwise, it returns the duration of the track at the given [index].
   Duration getTrackDuration(int index);
+
+  /// Move to the speicific [duration] in the music.
+  /// [index] can be used to change the music when the source is a playlist.
+  Future<void> seek(Duration duration, {int? index});
 }
 
 /// Player for single audio tracks, like voice or effects.
