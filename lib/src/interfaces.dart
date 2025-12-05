@@ -145,10 +145,10 @@ abstract class MusicPlayer {
   Future<void> replaceAsset(String path);
 
   /// Push an [AudioSource].
-  Future<void> pushAudioSource(AudioSource source);
+  Future<void> pushAudioSource(AudioSource source, {int? initialIndex});
 
   /// Replace current track with an [AudioSource].
-  Future<void> replaceAudioSource(AudioSource source);
+  Future<void> replaceAudioSource(AudioSource source, {int? initialIndex});
 
   /// Pop the last pushed track.
   Future<void> pop();
@@ -173,7 +173,7 @@ abstract class MusicPlayer {
   /// Otherwise, it returns the duration of the track at the given [index].
   Duration getTrackDuration(int index);
 
-  /// Move to the speicific [duration] in the music.
+  /// Move to the specific [duration] in the music.
   /// [index] can be used to change the music when the source is a playlist.
   Future<void> seek(Duration duration, {int? index});
 }
@@ -214,7 +214,7 @@ abstract class AudioPlayer {
   Future<Duration?> setFilepath(String path);
 
   /// Set an [AudioSource] to play.
-  Future<Duration?> setAudioSource(AudioSource source);
+  Future<Duration?> setAudioSource(AudioSource source, {int? initialIndex});
 
   /// Start playback.
   Future<void> play();
