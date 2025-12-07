@@ -162,20 +162,16 @@ abstract class MusicPlayer {
   /// Start playback.
   Future<void> play();
 
-  /// Restart the current music
-  Future<void> restart();
-
-  /// Returns the duration of current music
-  /// from a specific track in the playlist.
-  ///
-  /// If the playlist contains only one track, this method returns its duration,
-  /// ignoring the [index] parameter.
-  /// Otherwise, it returns the duration of the track at the given [index].
-  Duration getTrackDuration(int index);
-
   /// Move to the specific [duration] in the music.
   /// [index] can be used to change the music when the source is a playlist.
   Future<void> seek(Duration duration, {int? index});
+
+  /// Returns a Stream emitting the duration of the track at the given [index].
+  ///
+  /// Since metadata is loaded only for the active track, this Stream:
+  /// * Emits the actual [Duration] if the [index] corresponds to the currently playing track.
+  /// * Emits `null` if the [index] does not correspond to the active track.
+  Stream<Duration?> durationStreamByIndex(int index);
 }
 
 /// Player for single audio tracks, like voice or effects.
@@ -234,10 +230,10 @@ abstract class AudioPlayer {
   /// Set loop mode.
   Future<void> setLoopMode(LoopMode mode);
 
-  /// Returns the duration of a specific track in the playlist.
+  /// Returns a Stream emitting the duration of the track at the given [index].
   ///
-  /// If the playlist contains only one track, this method returns its duration,
-  /// ignoring the [index] parameter.
-  /// Otherwise, it returns the duration of the track at the given [index].
-  Duration getTrackDuration(int index);
+  /// Since metadata is loaded only for the active track, this Stream:
+  /// * Emits the actual [Duration] if the [index] corresponds to the currently playing track.
+  /// * Emits `null` if the [index] does not correspond to the active track.
+  Stream<Duration?> durationStreamByIndex(int index);
 }
